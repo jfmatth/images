@@ -20,10 +20,11 @@ from django.urls import path
 from django.conf import settings
 from django.urls import re_path
 from django.views.static import serve
-
+from django.views.generic.base import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('health/', TemplateView.as_view(template_name="health.html") ),
 ]
 
 # Serve MEDIA, yea yea yea, I know you're not supposed to in Django, nginx is coming soon 
