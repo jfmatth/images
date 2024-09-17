@@ -37,10 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'images', 
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -121,3 +125,20 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# MY CUSTOMIZATIONS
+
+import os
+import dj_database_url
+
+ALLOWED_HOSTS = ["*"]
+DEBUG = False or 'DEBUG' in os.environ
+
+DATABASES = {
+    'default': dj_database_url.config(
+        default='sqlite:///' + (BASE_DIR / 'db.sqlite3').as_posix(),
+        conn_max_age=600,
+        conn_health_checks=True,
+    )
+}
