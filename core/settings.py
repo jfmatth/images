@@ -164,3 +164,5 @@ MEDIA_ROOT = BASE_DIR / 'mediafiles'
 
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+CSRF_TRUSTED_ORIGINS = ['https://images.3756home.org']
